@@ -8,6 +8,9 @@
     "guidelines": true,
     "mcp": true,
     "nightwatch": false,
+    "packages": [
+        "dashworthy/visualizations"
+    ],
     "sail": false,
     "skills": [
         "fortify-development",
@@ -15,6 +18,9 @@
         "wayfinder-development",
         "pest-testing",
         "inertia-react-development",
-        "tailwindcss-development"
+        "tailwindcss-development",
+        "visualization-charts",
+        "visualization-datagrids",
+        "visualization-metrics"
     ]
 }
