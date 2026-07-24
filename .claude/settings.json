@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"exit:$?\")",
+      "Read(//Users/aleach/.claude/plugins/cache/throughline/throughline/0.6.1/skills/reviewing-documentation/**)",
+      "Bash(php artisan *)",
+      "Bash(grep -E \"\\\\.md$\")"
+    ]
+  }
+}

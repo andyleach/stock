@@ -1,0 +1,30 @@
+{
+  "_readme": "Copy to .throughline/config.json at your repo root and edit. Strict JSON (no comments). Governs decomposing-requirements. max_iterations is a safety backstop on recursion depth, NOT the primary stop — the leaf test in the skill is. max_leaves is a sanity cap that signals over-decomposition. skip_if_atomic outputs a single leaf when the feature is already cohesive. The documentation block governs the documenting skill: each documenter has name/output/template/when (on-feature-complete|manual); template falls back to the plugin's bundled default if the file is absent. The models block is OPTIONAL: a flat map from a dispatched skill/stage name to ONE model string, plus a \"*\" fallback. Resolution is models[skill] then models[\"*\"] then omit (inherit the session model). Model strings are in your harness's own namespace — the defaults below use Claude Code aliases (opus/sonnet/haiku); on opencode swap them for provider/model ids (e.g. ollama/qwen2.5-coder:14b), on Antigravity for Gemini ids. There is no primary key — throughline never sets the session/conductor model, only the models it dispatches as subagents.",
+
+  "decomposition": {
+    "max_iterations": 5,
+    "max_leaves": 12,
+    "skip_if_atomic": true
+  },
+
+  "documentation": {
+    "enabled": true,
+    "documenters": [
+      { "name": "feature",      "output": "docs/features",     "template": ".throughline/templates/feature.md",      "when": "on-feature-complete" },
+      { "name": "architecture", "output": "docs/architecture", "template": ".throughline/templates/architecture.md", "when": "manual" }
+    ]
+  },
+
+  "models": {
+    "mapping-the-codebase": "haiku",
+    "researching-prior-art": "haiku",
+    "surveying-reuse": "haiku",
+    "identifying-shared-abstractions": "opus",
+    "simplifying-with-abstractions": "opus",
+    "documenting": "haiku",
+    "reviewing-documentation": "opus",
+    "implementation": "sonnet",
+    "code-review": "opus",
+    "*": "haiku"
+  }
+}
